@@ -1,9 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -44,3 +46,12 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile']);
+Route::get('/edit/profile', [App\Http\Controllers\HomeController::class, 'edit_profile']);
+Route::post('/profile', [App\Http\Controllers\HomeController::class, 'update_profile']);
+
+// update password
+Route::get('/change/password', [App\Http\Controllers\HomeController::class, 'change_password']);
+Route::post('/change/password', [App\Http\Controllers\HomeController::class, 'update_password']);
