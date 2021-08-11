@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use auth;
+use App\Models\admin;
+
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
 {
@@ -11,6 +15,25 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() {
+        $this->middleware('auth:admin');
+    }
+    function check(Request $request)
+     {
+        $this->validate($request, [
+            'email' => 'required|confirmed|min:6',
+            'password' => 'required',
+        ]);
+        $creds=$request->only('email','password');
+        {
+            if(Auth::guard('admin')->attempt($creds)){
+                return redirect()->route('admin.home');
+            }
+            else{
+                return redirect()->route('admin.login')->with('fail','incorrect credentials');
+            }
+        }
+     }
     public function index()
     {
         //
