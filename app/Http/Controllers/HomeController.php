@@ -65,7 +65,7 @@ class HomeController extends Controller
         }
 
         $user->save();
-        return redirect('profile');
+        return redirect('profile')->with('status', 'Profile updated!');
     }
 
     catch (ModelNotFoundException $e) {
@@ -102,7 +102,7 @@ class HomeController extends Controller
         $User->password = bcrypt($request->password);
         $User->save();
         
-        return redirect('home');
-    }
+        return redirect('home')->with('status', 'PASSWORD CHANGED');
+    } 
 }    
 }

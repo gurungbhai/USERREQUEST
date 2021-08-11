@@ -36,7 +36,7 @@
                 </div>
             @endif
             <p>This project is done using laravel PHP framework. For the verifivation of email I have use mailtrap.io You can ask for the env file for the verification of email.<br>
-                Change <br>
+               <br> IN env file Change <br>
                 MAIL_MAILER=smtp <br>
                 MAIL_HOST=smtp.mailtrap.io <br>
                 MAIL_PORT=2525 <br>

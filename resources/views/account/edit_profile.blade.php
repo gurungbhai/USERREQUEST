@@ -36,25 +36,12 @@
                                 else.</small>
                         </div>
 
-                        <div class="form-group ">
-
-                            <label>New Password</label>
-
-                            <input class="form-control form-control-lg" name="password" type="password"
-                                placeholder="Enter your password">
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <label>Confirm Password</label>
-
-                            <input type="text" class="form-control form-control-lg" name="confirm_password" type="password"
-                                placeholder="Confirm your password">
-
-                        </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <div class="btn-group me-2 ml-3" role="group" aria-label="Second group">
+                        <a href="{{url('home')}}" class="btn btn-primary">Back</a>
+                        </div>
                     </form>
                 </div>
             </div>
