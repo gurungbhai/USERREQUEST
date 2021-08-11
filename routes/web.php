@@ -55,3 +55,12 @@ Route::post('/profile', [App\Http\Controllers\HomeController::class, 'update_pro
 // update password
 Route::get('/change/password', [App\Http\Controllers\HomeController::class, 'change_password']);
 Route::post('/change/password', [App\Http\Controllers\HomeController::class, 'update_password']);
+
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::middleware(['guest:admin'])->group(function(){
+        Route::view('/login','admin.login')->name('login');
+    });
+    Route::middleware(['auth::admin'])->group(function(){
+        Route::view('/home','admin.home')->name('home');
+    });
+});
